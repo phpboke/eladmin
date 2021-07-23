@@ -31,7 +31,7 @@ public class ElPermissionConfig {
     public Boolean check(String ...permissions){
         // 获取当前用户的所有权限
         List<String> elPermissions = SecurityUtils.getCurrentUser().getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-        // 判断当前用户的所有权限是否包含接口上定义的权限
+        // 判断当前用户访问的菜单/权限是否能匹配到该用户所有拥有的菜单/权限
         return elPermissions.contains("admin") || Arrays.stream(permissions).anyMatch(elPermissions::contains);
     }
 }

@@ -24,14 +24,10 @@ public class TagDto extends BaseDTO implements Serializable {
     /** tag名字 */
     private String name;
 
-    /** tag类型(resource/network/datacenter/region) */
-    private String type;
-
     /** tag排序*/
     private Integer tagSort;
 
     public TagDto(String name, String type){
         this.name = name;
-        this.type = type;
     }
 }

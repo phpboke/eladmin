@@ -1,6 +1,7 @@
 package me.zhengjie.modules.system.rest;
 
 import lombok.RequiredArgsConstructor;
+import me.zhengjie.annotation.Log;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.modules.system.domain.Tag;
 import me.zhengjie.modules.system.service.TagService;
@@ -48,7 +49,7 @@ public class TagController {
    * @since 2021-07-21 18:23
    */
   @GetMapping
-  @PreAuthorize("@el.check('tag:list', 'user:list')")
+  @PreAuthorize("@el.check('tag:list')")
   public ResponseEntity<Object> query(TagQueryCriteria tagQueryCriteria, Pageable pageable) {
     return new ResponseEntity<>(tagService.queryAll(tagQueryCriteria, pageable), HttpStatus.OK);
   }
@@ -90,6 +91,7 @@ public class TagController {
    * @author kuxiaoqiang
    * @since 2021-07-21 18:24
    */
+  @Log("创建tag")
   @PostMapping
   @PreAuthorize("@el.check('tag:add')")
   public ResponseEntity<Object> create(@Validated @RequestBody Tag tag) {
@@ -108,6 +110,7 @@ public class TagController {
    * @author kuxiaoqiang
    * @since 2021-07-21 18:24
    */
+  @Log("更新tag")
   @PutMapping
   @PreAuthorize("@el.check('tag:edit')")
   public ResponseEntity<Object> update(@Validated(Tag.Update.class) @RequestBody Tag tag) {
@@ -123,6 +126,7 @@ public class TagController {
    * @author kuxiaoqiang
    * @since 2021-07-21 18:24
    */
+  @Log("删除tag")
   @DeleteMapping
   @PreAuthorize("@el.check('tag:del')")
   public ResponseEntity<Object> delete(@RequestBody Set<Long> ids) {

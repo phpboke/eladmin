@@ -32,9 +32,6 @@ public class Tag extends BaseEntity implements Serializable {
   /** tag名字 */
   private String name;
 
-  /** tag类型(resource/network/datacenter/region) */
-  private String type;
-
     /** tag排序*/
     private Long tagSort;
 
